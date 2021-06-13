@@ -4,6 +4,11 @@ import React from 'react';
 import s from './ContactForm.module.css';
 
 const ContactForm = ({
+  state = {
+    name: '',
+    number: '',
+  },
+
   onSubmit,
   onChangeNumber,
   onChangeName,

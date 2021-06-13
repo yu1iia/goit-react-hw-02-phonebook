@@ -48,13 +48,11 @@ class App extends Component {
         contacts: [newContact, ...contacts],
       }));
     }
-
-    this.reset();
   };
-
-  reset = () => {
-    this.setState({ name: '', number: '' });
-  };
+  //  this.reset();
+  // reset = () => {
+  //   this.setState({ name: '', number: '' });
+  // };
 
   foundMatchedContact(contacts, newContact) {
     const match = contacts.some(contact => {
