@@ -13,7 +13,8 @@
   transition: all 0.25s ease-in-out;
 }
 .removeContactButton:hover {
-  box-shadow: 0px 0px 3px 3px rgba(95, 184, 71, 0.94);
+  box-shadow: 0px 0px 3px 3px rgba(256, 256, 256, 0.94);
+  background-color: rgb(238, 39, 148);
   font-weight: 700;
   cursor: pointer;
 }
