@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 //styles
 import s from './Filter.module.css';
@@ -16,5 +17,10 @@ const Filter = ({ onChange, value }) => (
     />
   </label>
 );
+
+Filter.prototype = {
+  value: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default Filter;

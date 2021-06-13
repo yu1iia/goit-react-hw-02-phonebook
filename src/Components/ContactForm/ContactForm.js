@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 //styles
 import s from './ContactForm.module.css';
@@ -45,5 +46,10 @@ const ContactForm = ({
     <button className={s.addButton}>Add contacts</button>
   </form>
 );
+
+// eslint-disable-next-line react/no-typos
+ContactForm.PropTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default ContactForm;
