@@ -9,8 +9,7 @@ import Filter from './Components/Filter/Filter';
 import './App.css';
 
 //npm
-import shortid from 'shortid';
-
+// import shortid from 'shortid';
 // import classNames from 'classnames';
 // import { v4 as uuidv4 } from 'uuid';
 // import { Formik, Form, Field } from 'formik';
@@ -24,59 +23,19 @@ class App extends Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    name: '',
-    number: '',
     filter: '',
   };
 
-  formSubmitHandler = e => {
-    e.preventDefault();
-    const { contacts, name, number } = this.state;
-
-    const newContact = {
-      name,
-      number,
-      id: shortid.generate(),
-    };
-
-    const foundMatch = this.foundMatchedContact(contacts, newContact);
-
+  submitHandler = newContact => {
+    const { contacts } = this.state;
+    const foundMatch = contacts.find(
+      contact => contact.name === newContact.name,
+    );
     if (foundMatch) {
-      return;
-    } else {
-      this.setState(({ contacts }) => ({
-        contacts: [newContact, ...contacts],
-      }));
-    }
-  };
-  //  this.reset();
-  // reset = () => {
-  //   this.setState({ name: '', number: '' });
-  // };
-
-  foundMatchedContact(contacts, newContact) {
-    const match = contacts.some(contact => {
-      return (
-        contact.name === newContact.name || contact.number === newContact.number
-      );
-    });
-
-    if (match) {
       alert(`${newContact.name} is already in contacts!`);
-      return true;
+      return;
     }
-  }
-
-  handleNameChange = e => {
-    this.setState({ name: e.currentTarget.value });
-  };
-  handleNumberChange = e => {
-    this.setState({ number: e.currentTarget.value });
-  };
-
-  handleChange = e => {
-    const { name, value } = e.currentTarget;
-    this.setState({ [name]: value });
+    this.setState({ contacts: [newContact, ...contacts] });
   };
 
   handleFilterContacts = ({ currentTarget }) => {
@@ -100,6 +59,7 @@ class App extends Component {
       <div className="container">
         <h1 className="phonebookHeader">Phonebook</h1>
         <ContactForm
+          submitHandler={this.submitHandler}
           onSubmit={this.formSubmitHandler}
           contactName={name}
           contactNumber={number}
