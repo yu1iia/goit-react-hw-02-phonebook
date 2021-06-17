@@ -49,7 +49,7 @@ class App extends Component {
   };
 
   render() {
-    const { contacts, filter, name, number } = this.state;
+    const { contacts, filter } = this.state;
 
     const normalizeFilter = this.state.filter.toLocaleLowerCase();
     const addedContacts = contacts.filter(contact =>
@@ -60,11 +60,11 @@ class App extends Component {
         <h1 className="phonebookHeader">Phonebook</h1>
         <ContactForm
           submitHandler={this.submitHandler}
-          onSubmit={this.formSubmitHandler}
-          contactName={name}
-          contactNumber={number}
-          onChangeName={this.handleNameChange}
-          onChangeNumber={this.handleNumberChange}
+          // onSubmit={this.formSubmitHandler}
+          // contactName={name}
+          // contactNumber={number}
+          // onChangeName={this.handleNameChange}
+          // onChangeNumber={this.handleNumberChange}
         />
 
         <h2 className="contactsHeader">Contacts</h2>
